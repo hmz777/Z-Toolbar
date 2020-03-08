@@ -27,6 +27,7 @@ i created this tool to pin more icons than can be accessed easily from anywhere.
 # Misc
 - The app register it self in the windows registery in order to run at startup (if the checkbox was checked).
 - Items are saved as a JSON file in the app directory.
+- In the near future, i will add a docking feature in order to dock the toolbar in different directions on screen.
 
 # Author
 ### Hamzi Alsheikh
