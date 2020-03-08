@@ -1,0 +1,16 @@
+﻿<Application
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Z_Toolbar"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:svh="clr-namespace:Z_Toolbar.Tools" x:Class="Z_Toolbar.App"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="UiComponents/Animations.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <svh:WindowCenteringConverter x:Key="WCC"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,20 @@
+﻿<Window x:Name="window" x:Class="Z_Toolbar.UiComponents.CustomMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Z_Toolbar.UiComponents"
+        mc:Ignorable="d"
+        Title="Information" BorderBrush="White" BorderThickness="1" Padding="0" Background="Black" FontFamily="Roboto" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Height="161" Width="376" Loaded="window_Loaded">
+    <Window.Effect>
+        <DropShadowEffect Direction="0" BlurRadius="200" ShadowDepth="5"/>
+    </Window.Effect>
+    <Grid Width="{Binding ActualWidth, ElementName=window}" Margin="0" Height="{Binding ActualHeight, ElementName=window}">
+        <Grid.Resources>
+            <ResourceDictionary Source="MessageboxButton.xaml"/>
+        </Grid.Resources>
+        <Button Content="OK" Click="Button_Click" Background="Black" Foreground="White" BorderBrush="White" BorderThickness="2" HorizontalAlignment="Right" Margin="0,118,21,0" VerticalAlignment="Top" Width="80" Height="25" Style="{DynamicResource MessageboxButtonStyle}"/>
+        <TextBlock x:Name="MessageTextBlock" x:FieldModifier="public" HorizontalAlignment="Left" Margin="80,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="White" Width="265" FontFamily="Roboto" Height="75.827" FontSize="13"/>
+        <Image x:Name="IconImage" x:FieldModifier="public" Source="..\Resources\del.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="20,10,311,96" RenderTransformOrigin="0.545,0.727"/>
+    </Grid>
+</Window>
