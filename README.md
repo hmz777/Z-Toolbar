@@ -8,6 +8,7 @@ i created this tool to pin more icons than can be accessed easily from anywhere.
 - The toolbar doesn't occupy any screen real estate because it resides off screen and only shown when the mouse pointer reaches the middle of the top edge of the screen.
 - It supports adding files and folders.
 - Easy and fast way to remove icons from the list by clicking the `Edit` button.
+- The app doesn't have a taskbar icon, it has only a tray icon which can be used to close it (in addition to the exit button on the main window).
 
 # Images
 
