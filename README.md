@@ -35,4 +35,4 @@ i created this tool to pin more icons than can be accessed easily from anywhere.
 
 # Author
 ### Hamzi Alsheikh
-### Website: [HMZ-Software](https://www.hmz-software.cf)
+### Website: [HMZ-Software](https://www.hmz-software.tk)
