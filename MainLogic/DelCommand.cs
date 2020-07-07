@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +23,12 @@ namespace Z_Toolbar.MainLogic
         public async void Execute(object parameter)
         {
             string tag = parameter as string;
-            var app = MainWindow.loa.Where(x => x.Path == tag).FirstOrDefault();
-            if (app == null) return;
-            MainWindow.loa.Remove(app);
-            await Serializer.Serialize(MainWindow.loa).ConfigureAwait(false);
+            var item = MainWindow.loa.Where(x => x.Path == tag).FirstOrDefault();
+            if (item == null) return;
+
+            MainWindow.loa.Remove(item);
+
+            await DataLogic.SaveDataAsync(MainWindow.loa).ConfigureAwait(false);
         }
     }
 }

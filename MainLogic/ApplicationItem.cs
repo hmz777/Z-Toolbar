@@ -18,8 +18,7 @@ namespace Z_Toolbar.MainLogic
         public string Path { get; set; }
         public bool IsFolder { get; set; }
 
-        [JsonIgnore]
-        public BitmapSource Icon { get; set; }
+        public byte[] IconBytes { get; set; }
 
         public ICommand delCommand;
         public ICommand runCommand;

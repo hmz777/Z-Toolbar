@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace Z_Toolbar.MainLogic
 {
-    public static class Serializer
+    public static class DataLogic
     {
         public async static Task Serialize(ObservableCollection<ApplicationItem> t)
         {
@@ -32,6 +32,16 @@ namespace Z_Toolbar.MainLogic
             }
 
             return loa;
+        }
+
+        public static async Task SaveDataAsync(ObservableCollection<ApplicationItem> dataCollection)
+        {
+            await Serialize(dataCollection);
+        }
+
+        public static async Task<ObservableCollection<ApplicationItem>> LoadDataAsync()
+        {
+            return await Deserialize();
         }
     }
 }

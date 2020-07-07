@@ -142,6 +142,7 @@ namespace Z_Toolbar.MainLogic
             internal int Unused2;
             internal RECT rcImage;
         }
+
         [ComImportAttribute()]
         [GuidAttribute("46EB5926-582E-4017-9FDF-E8998DAA0950")]
         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]

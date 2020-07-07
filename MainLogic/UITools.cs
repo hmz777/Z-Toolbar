@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using static Z_Toolbar.MainLogic.NativeMethods;
@@ -50,36 +52,35 @@ namespace Z_Toolbar.MainLogic
         {
             foreach (var item in loa)
             {
-                if (item.IsFolder)
-                {
-                    item.Icon = (BitmapSource)GetIcon(item.Path, true);
-                }
-                else
-                {
-                    item.Icon = (BitmapSource)GetIcon(item.Path, false);
-                }
+                item.IconBytes = GetIcon(item.Path, item.IsFolder, item.IconBytes);
             }
 
             return loa;
         }
 
-        public static BitmapSource GetIcon(string path,bool isDirectory)
+        public static byte[] GetIcon(string path, bool isDirectory, byte[] iconBytes = null)
         {
-            IntPtr hIcon = GetJumboIcon(GetIconIndex(path,isDirectory));
-            BitmapSource icon = null;
+            if (iconBytes?.Length > 0)
+                return iconBytes;
+
+            IntPtr hIcon = GetJumboIcon(GetIconIndex(path, isDirectory));
+            byte[] IconBytes;
 
             using (Icon ico = (Icon)System.Drawing.Icon.FromHandle(hIcon).Clone())
             {
-
-                icon = ico.ToBitmap().ToBitmapSource();
+                using (var stream = new MemoryStream())
+                {
+                    ico.ToBitmap().Save(stream, ImageFormat.Png);
+                    IconBytes = stream.ToArray();
+                }
             }
 
-            DestroyIcon(hIcon);
+            _ = DestroyIcon(hIcon);
 
-            return icon;
+            return IconBytes;
         }
 
-        internal static int GetIconIndex(string pszFile,bool isDirectory)
+        internal static int GetIconIndex(string pszFile, bool isDirectory)
         {
             uint attributes = FILE_ATTRIBUTE_NORMAL;
             if (isDirectory)
@@ -100,12 +101,19 @@ namespace Z_Toolbar.MainLogic
             IImageList spiml = null;
             Guid guil = new Guid(IID_IImageList); //or IID_IImageList2
 
-            SHGetImageList(SHIL_EXTRALARGE, ref guil, ref spiml);
+            _ = SHGetImageList(SHIL_EXTRALARGE, ref guil, ref spiml);
             IntPtr hIcon = IntPtr.Zero;
-            spiml.GetIcon(iImage, ILD_TRANSPARENT | ILD_IMAGE, ref hIcon); //
-
+            _ = spiml.GetIcon(iImage, ILD_TRANSPARENT | ILD_IMAGE, ref hIcon); //
             return hIcon;
         }
 
+        internal static byte[] GetByteArrayFromImage(string imagePath)
+        {
+            using (var image = Image.FromFile(imagePath))
+            {
+                var converter = new ImageConverter();
+                return (byte[])converter.ConvertTo(image, typeof(byte[]));
+            }
+        }
     }
 }

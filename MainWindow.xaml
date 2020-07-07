@@ -131,7 +131,7 @@
                             <ColumnDefinition Width="75"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="1" Text="{Binding Name}" TextTrimming="CharacterEllipsis" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="ClearType" Foreground="White" DockPanel.Dock="Bottom" HorizontalAlignment="Center" FontFamily="Roboto Light" FontSize="9"></TextBlock>
-                        <Image RenderOptions.BitmapScalingMode="NearestNeighbor" Source="{Binding Icon}"/>
+                        <Image RenderOptions.BitmapScalingMode="NearestNeighbor" Source="{Binding IconBytes}"/>
                         <Button Name="DelButton" Command="{Binding DelCommand}" CommandParameter="{Binding Path}" IsEnabled="False" Opacity="0" Height="25" Width="25" Style="{StaticResource DelButton}" xf:Animations.Primary="{xf:Animate BasedOn={StaticResource Grow}, Event=PointerOver}">
                             <Image Source="/Resources/del.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderOptions.BitmapScalingMode="HighQuality"/>
                         </Button>

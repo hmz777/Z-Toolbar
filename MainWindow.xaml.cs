@@ -14,6 +14,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Hardcodet.Wpf.TaskbarNotification;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Threading.Tasks;
+using Z_Toolbar.UiComponents;
 
 namespace Z_Toolbar
 {
@@ -70,7 +72,7 @@ namespace Z_Toolbar
                     {
                         Name = item.Remove(0, item.LastIndexOf('\\') + 1),
                         Path = item,
-                        Icon = (BitmapSource)UITools.GetIcon(item,false),
+                        IconBytes = UITools.GetIcon(item, false),
                         IsFolder = false
                     };
 
@@ -82,7 +84,7 @@ namespace Z_Toolbar
 
                 lv.ItemsSource = loa;
 
-                await Serializer.Serialize(loa).ConfigureAwait(false); //Save apps to Apps.json
+                await DataLogic.SaveDataAsync(loa).ConfigureAwait(false);  //Save apps to Apps.json
             }
         }
 
@@ -90,11 +92,19 @@ namespace Z_Toolbar
         {
             if (File.Exists(ConfigLocation))
             {
-                loa = await Serializer.Deserialize(); //Get apps from Apps.json
-                loa = UITools.PopulateIcons(loa);
-                lv.ItemsSource = loa;
+                try
+                {
+                    loa = await DataLogic.LoadDataAsync(); //Get apps from Apps.json
+                    loa = UITools.PopulateIcons(loa);
+                    lv.ItemsSource = loa;
+                    await DataLogic.SaveDataAsync(loa).ConfigureAwait(false);
+                }
+                catch (Exception)
+                {
+                    CustomMessageBox cmb = new CustomMessageBox("It Appears that app data is either missing or corrupt, if the \"Apps.json\" file is still present try deleting it and restarting the program.", MessageBoxIcon.Error);
+                    cmb.ShowDialog();
+                }
             }
-
         }
 
         private void window_MouseEnter(object sender, MouseEventArgs e)
@@ -176,11 +186,12 @@ namespace Z_Toolbar
             {
                 foreach (var item in cofd.FileNames)
                 {
+
                     var app = new ApplicationItem()
                     {
                         Name = item.Remove(0, item.LastIndexOf('\\') + 1),
                         Path = item,
-                        Icon = (BitmapSource)UITools.GetIcon(item,true),
+                        IconBytes = UITools.GetIcon(item, true),
                         IsFolder = true
                     };
 
@@ -192,7 +203,7 @@ namespace Z_Toolbar
 
                 lv.ItemsSource = loa;
 
-                await Serializer.Serialize(loa).ConfigureAwait(false); //Save apps to Apps.json
+                await DataLogic.SaveDataAsync(loa).ConfigureAwait(false); //Save apps to Apps.json
             }
 
             cofd.Dispose();

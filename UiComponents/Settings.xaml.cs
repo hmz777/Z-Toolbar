@@ -30,10 +30,6 @@ namespace Z_Toolbar.UiComponents
             this.DialogResult = true;
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
@@ -52,6 +48,16 @@ namespace Z_Toolbar.UiComponents
 
             rKey.Close();
 
+        }
+
+        private void window_Initialized_1(object sender, EventArgs e)
+        {
+            RegistryKey rKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", false);
+
+            if (rKey.GetValue("ZToolbar") != null)
+                startupCheckbox.IsChecked = true;
+
+            rKey.Close();
         }
     }
 }

@@ -69,16 +69,6 @@ namespace Z_Toolbar.UiComponents
                     break;
             }
         }
-
-        private void window_Initialized(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MessageTextBlock_Initialized(object sender, EventArgs e)
-        {
-
-        }
     }
 
     public enum MessageBoxIcon : int
