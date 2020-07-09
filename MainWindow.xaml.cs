@@ -133,7 +133,7 @@ namespace Z_Toolbar
 
             if (win.Top >= 0) //Simple slide top animation
             {
-                while (win.Top > -135)
+                while (win.Top > -143)
                 {
                     win.Top -= 0.5; //Adjust for smoother animation
 
