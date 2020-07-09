@@ -24,6 +24,9 @@ i created this tool to pin more icons than can be accessed easily from anywhere.
 ## Deleting Items
 ![Deleting Items](https://i.imgur.com/gOB1hJk.png "Deleting Items")
 
+# Downloads
+[Z-Toolbar Installer](https://github.com/hmz777/Z-Toolbar/releases/download/v1.1/Z-Toolbar.exe) 
+
 # Misc
 - The app register it self in the windows registery in order to run at startup (if the checkbox was checked).
 - Items are saved as a JSON file in the app directory.
