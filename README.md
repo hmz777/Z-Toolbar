@@ -1,3 +1,8 @@
+[![HitCount](http://hits.dwyl.com/hmz777/Z-Toolbar.svg)](http://hits.dwyl.com/hmz777/Z-Toolbar)
+![GitHub All Releases](https://img.shields.io/github/downloads/hmz777/Z-Toolbar/total?color=orange&style=flat-square)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/hmz777/Z-Toolbar?color=yellow&label=latest%20release&style=flat-square)
+![GitHub](https://img.shields.io/github/license/hmz777/Z-Toolbar?color=blue&style=flat-square)
+
 # Z-Toolbar
 A simple productivity toolbar written in C# and WPF.
 
