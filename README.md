@@ -1,4 +1,3 @@
-![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fhmz777%2FZ-Toolbar)
 ![GitHub All Releases](https://img.shields.io/github/downloads/hmz777/Z-Toolbar/total?color=orange&style=flat-square)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/hmz777/Z-Toolbar?color=yellow&label=latest%20release&style=flat-square)
 ![GitHub Release Date](https://img.shields.io/github/release-date/hmz777/Z-Toolbar?color=yellow&style=flat-square)
